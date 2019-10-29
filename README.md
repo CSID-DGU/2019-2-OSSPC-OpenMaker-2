@@ -41,20 +41,20 @@ git clone https://github.com/CSID-DGU/2019-2-OSSPC-OpenMaker-2.git
 
 - workspace로 clone 받은 상위 폴더를 지정해주고  다음에 뜨는 창에서 import project 클릭
 
-  ![1572257354509](C:\Users\Jeongtai\AppData\Roaming\Typora\typora-user-images\1572257354509.png)
+  ![1572257354509](assets/1572257354509.png)
 
 
 
 - 다음 창에서 General - Existing Projects into Workspace 클릭
 
-![1572257481719](C:\Users\Jeongtai\AppData\Roaming\Typora\typora-user-images\1572257481719.png)
+![1572257481719](assets/1572257481719.png)
 
 
 
 - clone한 폴더를 선택하고  3번 칸에 해당하는 부분이 나왔는지 꼭!!! 확인하셔야 됩니다.
   저는 지금 이미 프로젝트를 import한 상태여서  Finish 버튼이 비활성화되어 있는데요,
   처음에 하시면 활성화되어있는 Finish버튼 누르시면 끝입니다.
-- ![1572364685962](../../../USB Backup/대학/4학년/2학기/오픈소스/ima/1572364685962.png)
+- ![1572364685962](assets/1572364685962.png)
 
 # 사용설명서
 
