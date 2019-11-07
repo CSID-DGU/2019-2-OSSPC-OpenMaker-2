@@ -4,7 +4,7 @@ back:back1 0.5 0.0 0 0 - H -
 //front:back2 0.6 1.0 100 150 - - 0.5
 //front:back2 0.6 -1.0 0 0 - - 0.5
 //front:back2 0.6 -1.0 400 400 - - 0.5
-// Para la música
+// Para la mï¿½sica
 // music:name
 music:song1
 
@@ -53,11 +53,11 @@ music:song1
 .....???..........c.........................................................c..........................................B
 .............ccccccccccc...................................................c...........................................B
 ...cccc......ccccccccccc...........c...........BBBB.......................c...................................cccc.....B
-....................................c....................................c............................cccc....BBBB.....B
-...BBBB......BBBBBBBBBBB.BBBBBBBBBB..c.........cccc...BBB....................................cccc.....BBBB.............c
+...................................c....................................c............................cccc....BBBB.....B
+cccc.........BBBBBBBBBBB.BBBBBBBBBB..c.........cccc...BBB....................................cccc.....BBBB.............c
 ..............................BBBBBB..c...............BBB...........................cccc.....BBBB......................B
 ..............................BBBBBBB.................BBB...........................BBBB...............................B
 *......BBBBBB.................BBBBBBBB.................................................................................B
-BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
-
+BBBB...BBBBB...BB...BBBBBBBBBBBBBBBBBBBBB....BBBBBBBBBBB....BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
 // Hacer que en la zona a mostrar aparezca el jugador

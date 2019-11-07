@@ -4,8 +4,14 @@
 package com.blogspot.programmingheroes.supermariojava;
 
 
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Point;
+import java.awt.RenderingHints;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 
 import com.blogspot.programmingheroes.supermariojava.loaders.ImagesLoader;
 import com.blogspot.programmingheroes.supermariojava.loaders.Map;
@@ -37,7 +43,7 @@ public class Main extends Stage {
 		// no cargamos nada.
 		loader = new ImagesLoader("res/img", "loader");
 		sounds = new SoundsLoader("res/sounds", "loader");
-		// Añadimos los cargadores de sonido y de
+		// Aï¿½adimos los cargadores de sonido y de
 		// imagen a el objeto Stage (superclase).
 		setImagesLoader(loader);
 		setSoundsLoader(sounds);
@@ -54,15 +60,15 @@ public class Main extends Stage {
 		// no cargamos nada.
 		loader = new ImagesLoader("res/img", "loader");
 		sounds = new SoundsLoader("res/sounds", "loader");
-		// Añadimos los cargadores de sonido y de
+		// Aï¿½adimos los cargadores de sonido y de
 		// imagen a el objeto Stage (superclase).
 		setImagesLoader(loader);
 		setSoundsLoader(sounds);
 	}
 	
 	public synchronized void initStage() {
-		// Cargamos las imágenes y los sonidos
-		// que están indicados en el archivo externo.
+		// Cargamos las imï¿½genes y los sonidos
+		// que estï¿½n indicados en el archivo externo.
 		loader.startLoader();
 		sounds.startLoader();
 		
