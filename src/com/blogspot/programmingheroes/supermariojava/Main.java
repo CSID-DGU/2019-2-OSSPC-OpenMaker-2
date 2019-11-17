@@ -82,8 +82,8 @@ public class Main extends Stage {
 
 	public synchronized void updateStage() {
 		map.act();
-		//1. 맨 밑 바닥 가시에 닿았을 때 위치 초기화
-		//2. 하트 1개 감
+		// 포탈에 닿았을 때 다음 스테이지
+		
 		if (!gameOver && Coin.N_COINS == Coin.COINS_CATCHED) {
 			gameOver();
 			final Stage s = this;
