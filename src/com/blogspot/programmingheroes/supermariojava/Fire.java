@@ -103,6 +103,7 @@ public class Fire extends WorldObject {
 			if(p.getFoot().intersects(getHead())) {
 				// 하트 하나 감소하고 처음위치로 초기화
 				//만약 남는 하트가 하나도 없으면 게임오버 창으로 이동
+				map.makeThisMap();
 				map.addPlayer(p);
 				
 				System.out.println("죽었습니다.");

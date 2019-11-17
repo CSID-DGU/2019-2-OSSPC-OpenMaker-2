@@ -108,7 +108,8 @@ public class Map {
 			System.exit(-1);
 		}
 	}
-
+	
+	//파일 오브젝트를 만드는 메서드
 	public void initMap() {
 		spriteMap = new WorldObject[MAX_SIZE_Y][MAX_SIZE_X];
 		backs = new ArrayList<Background>();
@@ -169,6 +170,7 @@ public class Map {
 			br.close();
 		} catch (IOException e) {
 			System.err.println("Error reading map file");
+			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -213,6 +215,7 @@ public class Map {
 		}
 	}
 public boolean endlevel = false;
+	//다음 판으로 가게 하는 메서드
 	public void nextLevel() {
 		endlevel = true;
 		try{Thread.sleep(500);}catch(Exception e){}
@@ -222,6 +225,13 @@ public boolean endlevel = false;
 		fileName = s.toString();
 		initMap();
 		endlevel = false;	
+	}
+	//현재 맵 다시 생성
+	public void makeThisMap() {
+		try{Thread.sleep(100);}catch(Exception e){}
+		StringBuffer s = new StringBuffer(fileName);
+		fileName = s.toString();
+		initMap();
 	}
 
 	public Background createBackground(String info) {

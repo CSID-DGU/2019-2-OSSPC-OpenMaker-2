@@ -35,29 +35,28 @@ public class WorldObject extends Sprite {
 		supportsPlayer = supportsEnemige = false;
 	}
 
-
-	// Métodos GET --------------------------------------------------
+	// Mï¿½todos GET --------------------------------------------------
 	public int getFloor() {
 		if (supportsPlayer || supportsEnemige) {
 			return (int)y;
 		}
 		return NOT_FLOOR;
 	}
-	//  fin de métodos GET ------------------------------------------
+	//  fin de mï¿½todos GET ------------------------------------------
 
 
-	// Métodos SET --------------------------------------------------
+	// Mï¿½todos SET --------------------------------------------------
 	public void setSupportPlayer(boolean support) {
 		this.supportsPlayer = false;
 	}
-	//  fin de los métodos SET --------------------------------------
+	//  fin de los mï¿½todos SET --------------------------------------
 
 
-	// Métodos BOOLEANOS --------------------------------------------
+	// Mï¿½todos BOOLEANOS --------------------------------------------
 	public boolean supportsPlayer() {
 		return supportsPlayer;
 	}
-	//  fin de los métodos BOOLEANOS --------------------------------
+	//  fin de los mï¿½todos BOOLEANOS --------------------------------
 
 
 }  // fin de la clase WorldObject
