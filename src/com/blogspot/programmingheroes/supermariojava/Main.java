@@ -4,8 +4,14 @@
 package com.blogspot.programmingheroes.supermariojava;
 
 
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Point;
+import java.awt.RenderingHints;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 
 import com.blogspot.programmingheroes.supermariojava.loaders.ImagesLoader;
 import com.blogspot.programmingheroes.supermariojava.loaders.Map;
@@ -37,7 +43,7 @@ public class Main extends Stage {
 		// no cargamos nada.
 		loader = new ImagesLoader("res/img", "loader");
 		sounds = new SoundsLoader("res/sounds", "loader");
-		// A�adimos los cargadores de sonido y de
+		// A�adimos los cargadores de sonido y de
 		// imagen a el objeto Stage (superclase).
 		setImagesLoader(loader);
 		setSoundsLoader(sounds);
@@ -54,15 +60,15 @@ public class Main extends Stage {
 		// no cargamos nada.
 		loader = new ImagesLoader("res/img", "loader");
 		sounds = new SoundsLoader("res/sounds", "loader");
-		// A�adimos los cargadores de sonido y de
+		// A�adimos los cargadores de sonido y de
 		// imagen a el objeto Stage (superclase).
 		setImagesLoader(loader);
 		setSoundsLoader(sounds);
 	}
 	
 	public synchronized void initStage() {
-		// Cargamos las im�genes y los sonidos
-		// que est�n indicados en el archivo externo.
+		// Cargamos las im�genes y los sonidos
+		// que est�n indicados en el archivo externo.
 		loader.startLoader();
 		sounds.startLoader();
 		
@@ -76,6 +82,8 @@ public class Main extends Stage {
 
 	public synchronized void updateStage() {
 		map.act();
+		// 포탈에 닿았을 때 다음 스테이지
+		
 		if (!gameOver && Coin.N_COINS == Coin.COINS_CATCHED) {
 			gameOver();
 			final Stage s = this;

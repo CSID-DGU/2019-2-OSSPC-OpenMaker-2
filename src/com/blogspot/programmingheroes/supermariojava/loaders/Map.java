@@ -4,14 +4,21 @@
 package com.blogspot.programmingheroes.supermariojava.loaders;
 
 
-import java.awt.*;
-import java.io.*;
-import java.util.*;
+import java.awt.Graphics;
+import java.awt.Point;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 import com.blogspot.programmingheroes.supermariojava.Background;
 import com.blogspot.programmingheroes.supermariojava.Brick;
 import com.blogspot.programmingheroes.supermariojava.Coin;
 import com.blogspot.programmingheroes.supermariojava.CoinBox;
+import com.blogspot.programmingheroes.supermariojava.Fire;
 import com.blogspot.programmingheroes.supermariojava.Player;
 import com.blogspot.programmingheroes.supermariojava.Sprite;
 import com.blogspot.programmingheroes.supermariojava.Stage;
@@ -63,9 +70,9 @@ public class Map {
 
 	/**
 	 *  Lugares desde los cuales es posible que empieze
-	 * un jugador. El n�mero de puntos marca el m�ximo
+	 * un jugador. El n�mero de puntos marca el m�ximo
 	 * de jugadores que pueden jugar este nivel.
-	 * Por lo tanto, como m�nimo, debe haber uno.
+	 * Por lo tanto, como m�nimo, debe haber uno.
 	 */
 	public ArrayList<Point> startingPlaces;
 
@@ -101,7 +108,8 @@ public class Map {
 			System.exit(-1);
 		}
 	}
-
+	
+	//파일 오브젝트를 만드는 메서드
 	public void initMap() {
 		spriteMap = new WorldObject[MAX_SIZE_Y][MAX_SIZE_X];
 		backs = new ArrayList<Background>();
@@ -136,7 +144,7 @@ public class Map {
 			while ((line = br.readLine()) != null) {
 				line = line.trim();
 				System.out.println(line);
-				// Si es una linea vac�a o un comentario...
+				// Si es una linea vac�a o un comentario...
 				if (line.length() == 0 ||
 					line.startsWith("//")) {
 						continue;
@@ -162,6 +170,7 @@ public class Map {
 			br.close();
 		} catch (IOException e) {
 			System.err.println("Error reading map file");
+			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -190,6 +199,8 @@ public class Map {
 			case '?':
 				o = new CoinBox(stage);
 				break;
+			case 'F':
+				o = new Fire(stage);
 			case '*':
 				startingPlaces.add(new Point(
 					x*tileXSize, y*tileYSize));
@@ -204,6 +215,7 @@ public class Map {
 		}
 	}
 public boolean endlevel = false;
+	//다음 판으로 가게 하는 메서드
 	public void nextLevel() {
 		endlevel = true;
 		try{Thread.sleep(500);}catch(Exception e){}
@@ -213,6 +225,13 @@ public boolean endlevel = false;
 		fileName = s.toString();
 		initMap();
 		endlevel = false;	
+	}
+	//현재 맵 다시 생성
+	public void makeThisMap() {
+		try{Thread.sleep(100);}catch(Exception e){}
+		StringBuffer s = new StringBuffer(fileName);
+		fileName = s.toString();
+		initMap();
 	}
 
 	public Background createBackground(String info) {
@@ -349,8 +368,8 @@ public boolean endlevel = false;
 
 	public void act() {
 		if (endlevel) return;
-		// Actualizamos las clases de manera est�tica.
-		// De esta forma hacemos que las im�genes sean
+		// Actualizamos las clases de manera est�tica.
+		// De esta forma hacemos que las im�genes sean
 		// las mismas para todos los WorldObjects(Sprites).
 		Coin.actClass();
 		Brick.actClass();
@@ -390,7 +409,7 @@ public boolean endlevel = false;
 		if (!movingY) {
 			ySpeed = 0;
 		}
-		// Actualizamos los sprites est�ticos.
+		// Actualizamos los sprites est�ticos.
 		tileX = (int)xMap/tileXSize;
 		tileY = (int)yMap/tileYSize;
 		accurateX = -(int)xMap%tileXSize;
@@ -439,7 +458,7 @@ public boolean endlevel = false;
 			Background b = backs.get(i);
 			b.paint(g);
 		}
-		// Pintamos los sprites est�ticos.
+		// Pintamos los sprites est�ticos.
 		for (int i=tileX; i<tileX+displayX+1 && i<sizeX; i++) {
 			for (int j=tileY; j<tileY+displayY+1 && j<sizeY; j++) {
 				Sprite s = spriteMap[j][i];
@@ -489,7 +508,7 @@ public boolean endlevel = false;
 			&& y < sizeY) && (spriteMap[(int)y][(int)x] != null);
 	}
 
-	// M�todos GET --------------------------------------------------
+	// M�todos GET --------------------------------------------------
 	public int getWidth() {
 		return sizeX*tileXSize;
 	}
@@ -505,7 +524,7 @@ public boolean endlevel = false;
 	public int getDisplayableHeight() {
 		return displayY*tileYSize;
 	}
-	//  fin de m�todos GET -------------------------------------------
+	//  fin de m�todos GET -------------------------------------------
 
 }  // fin de la case Map
 

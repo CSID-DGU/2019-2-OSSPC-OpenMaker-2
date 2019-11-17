@@ -1,12 +1,12 @@
-// Cargador de imágenes para *ScrollGame*
-// NO modificar los nombres que se encuentran antes del '=' ni los números.
-// NO está recomendado el cambio de las imágenes que vienen predeterminadas,
-// pero en caso de hacerlo, sería conveniente que tuvieran el mismo tamaño.
+// Cargador de imï¿½genes para *ScrollGame*
+// NO modificar los nombres que se encuentran antes del '=' ni los nï¿½meros.
+// NO estï¿½ recomendado el cambio de las imï¿½genes que vienen predeterminadas,
+// pero en caso de hacerlo, serï¿½a conveniente que tuvieran el mismo tamaï¿½o.
 
-// Carga todas las imágenes de Mario
+// Carga todas las imï¿½genes de Mario
 3 mario=mario/mario1.gif 2 15 0_0=marioRStop 0_1=marioRJump 0_2=marioFStop 0_3=marioStairs1 0_4=marioRCrouch 0_5=marioRSlip 0_6=marioRWalk1 0_7=marioRWalk2 0_8=marioRWalk3 1_0=marioLStop 1_1=marioLJump 1_2=marioBStop 1_3=marioStairs2 1_4=marioLCrouch 1_5=marioLSlip 1_6=marioLWalk1 1_7=marioLWalk2 1_8=marioLWalk3
 
-// Carga todas las imágenes de Luigi
+// Carga todas las imï¿½genes de Luigi
 // TODO
 
 // Carga todos los fondos de las partidas
@@ -24,6 +24,8 @@
 // Para las cajas sorpresa
 3 box=boxes/surpriseBox.gif 4 1
 1 voidBox=boxes/voidBox.gif
+
+3 fire=fires/fire.png 1 1
 
 
 
