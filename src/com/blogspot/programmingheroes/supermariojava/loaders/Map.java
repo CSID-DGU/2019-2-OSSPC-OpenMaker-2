@@ -20,6 +20,7 @@ import com.blogspot.programmingheroes.supermariojava.Coin;
 import com.blogspot.programmingheroes.supermariojava.CoinBox;
 import com.blogspot.programmingheroes.supermariojava.Fire;
 import com.blogspot.programmingheroes.supermariojava.Player;
+import com.blogspot.programmingheroes.supermariojava.Portal;
 import com.blogspot.programmingheroes.supermariojava.Sprite;
 import com.blogspot.programmingheroes.supermariojava.Stage;
 import com.blogspot.programmingheroes.supermariojava.WorldObject;
@@ -201,6 +202,10 @@ public class Map {
 				break;
 			case 'F':
 				o = new Fire(stage);
+				break;
+			case 'H':
+				o = new Portal(stage);
+				break;
 			case '*':
 				startingPlaces.add(new Point(
 					x*tileXSize, y*tileYSize));
