@@ -99,7 +99,7 @@ public class Fire extends WorldObject {
 	public void collision(Sprite s) {
 		if (s instanceof Player && supportsPlayer) {
 			Player p = (Player)s;
-			// Colisiones del eje Y
+			
 			if(p.getFoot().intersects(getHead())) {
 				// 하트 하나 감소하고 처음위치로 초기화
 				//만약 남는 하트가 하나도 없으면 게임오버 창으로 이동
