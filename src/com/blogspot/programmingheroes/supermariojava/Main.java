@@ -83,8 +83,24 @@ public class Main extends Stage {
 	public synchronized void updateStage() {
 		map.act();
 		// 포탈에 닿았을 때 다음 스테이지
-		
-		if (!gameOver && Coin.N_COINS == Coin.COINS_CATCHED) {
+		// 코인다먹었을때 하트하나 증가 if (!gameOver && Coin.N_COINS == Coin.COINS_CATCHED)
+//		if (!gameOver && Coin.N_COINS == Coin.COINS_CATCHED) {
+//			gameOver();
+//			final Stage s = this;
+//			new Thread(new Runnable() {
+//				public void run() {
+//					try {
+//						Thread.sleep(2000);
+//					} catch (Exception e) {}
+//					Coin.N_COINS = 0;
+//					gameOver = false;
+//					map.nextLevel();
+//					map.addPlayer(new Mario(s));
+//					Coin.COINS_CATCHED = 0;
+//				}
+//			}).start();
+//		}
+		if (!gameOver && Portal.checkTouchPortal) {
 			gameOver();
 			final Stage s = this;
 			new Thread(new Runnable() {
@@ -94,6 +110,7 @@ public class Main extends Stage {
 					} catch (Exception e) {}
 					Coin.N_COINS = 0;
 					gameOver = false;
+					Portal.checkTouchPortal = false;
 					map.nextLevel();
 					map.addPlayer(new Mario(s));
 					Coin.COINS_CATCHED = 0;

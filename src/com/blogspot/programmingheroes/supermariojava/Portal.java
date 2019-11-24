@@ -56,7 +56,10 @@ public class Portal extends WorldObject {
 	// y el la cual se quedar� quieto el ladrillo cuandoT
 	// realize se movimiento al ser golpeado
 	protected float initY = 0;
-
+	
+	//포탈에 닿았는지 체크하는 변수
+	public static boolean checkTouchPortal;
+	
 	public Portal(Stage s) {
 		super(s);
 		supportsPlayer = true;
@@ -92,43 +95,18 @@ public class Portal extends WorldObject {
 		}
 	}
 
-//	public void collision(Sprite s) {
-//		if (s instanceof Player && supportsPlayer) {
-//			Player p = (Player)s;
-//			// Colisiones del eje X
-//			if (getLeft().intersects(p.getRight())
-//				 && p.getSpeed().getAccurateX() > 0) {
-//					//System.out.println("Izquierda del brick");
-//					p.getSpeed().setX(0);
-//					p.setLeftWall((int)x);
-//			} else if (getRight().intersects(p.getLeft())
-//				 && p.getSpeed().getAccurateX() < 0) {
-//					//System.out.println("Derecha del brick");
-//					p.getSpeed().setX(0);
-//					p.setRightWall((int)x+width);
-//			}else
-//			// Colisiones del eje Y
-//			if (p.getHead().intersects(getFoot()) && p.isRising()) {
-//				//System.out.println("Debajo del brick");
-//				if (!moving) {
-//					moving = true;
-//					((Main)stage).getSoundsLoader().play("blockHit", false);
-//					speed.setY(movingSpeed);
-//					if (s.getSpeed().getAccurateY()>movingSpeed) {
-//						s.getSpeed().setY(movingSpeed);
-//					}
-//					s.setY(y+height);
-//				} else {
-//					s.getSpeed().setY(speed.getAccurateY());
-//				}
-//			} else if (p.getFoot().intersects(getHead())) {
-//				if (!moving) {
-//					//System.out.println("Arriba del brick");
-//					p.setFloor((int)y);
-//				}
-//			}
-//		}
-//	}
+	public void collision(Sprite s) {
+		if (s instanceof Player && supportsPlayer) {
+			Player p = (Player)s;
+			
+			if (getLeft().intersects(p.getRight())) {
+				checkTouchPortal = true;
+			} 
+			if (p.getFoot().intersects(getHead())) {
+				checkTouchPortal = true;
+			} 
+		}
+	}
 
 	public void setY(float yPos) {
 		super.setY(yPos);
