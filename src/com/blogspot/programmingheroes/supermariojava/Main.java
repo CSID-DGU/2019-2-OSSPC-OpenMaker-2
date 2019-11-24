@@ -133,7 +133,7 @@ public class Main extends Stage {
                 RenderingHints.VALUE_TEXT_ANTIALIAS_GASP);
 			g2.setFont(new Font(Font.MONOSPACED,
 				Font.BOLD, 30));
-			g2.drawString("Fin del juego",
+			g2.drawString("Next Stage",
 				WIDTH/2-100, HEIGHT/2-10);
 		}
 		// PARA SIMULAR OSCURIDAD EN EL MAPA
