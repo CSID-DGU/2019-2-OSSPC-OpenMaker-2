@@ -12,10 +12,14 @@ import java.awt.Point;
 import java.awt.RenderingHints;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
 
 import com.blogspot.programmingheroes.supermariojava.loaders.ImagesLoader;
 import com.blogspot.programmingheroes.supermariojava.loaders.Map;
 import com.blogspot.programmingheroes.supermariojava.loaders.SoundsLoader;
+
+
+
 
 
 /**
@@ -27,12 +31,14 @@ public class Main extends Stage {
 	private ImagesLoader loader;
 	private SoundsLoader sounds;
 	private Map map;
+	private BufferedImage heartIcon;
 
-	// Gravedad del escenario. Defecto 0.2
 	private float gravity = 0.2F;
 
 	Point pointCursor = new Point(-1,-1);
 
+	private Mario m;
+	
 	public Main(boolean applet) {
 		super(CANVAS);
 		setFPS(80);
@@ -43,7 +49,7 @@ public class Main extends Stage {
 		// no cargamos nada.
 		loader = new ImagesLoader("res/img", "loader");
 		sounds = new SoundsLoader("res/sounds", "loader");
-		// A�adimos los cargadores de sonido y de
+		// A占폸dimos los cargadores de sonido y de
 		// imagen a el objeto Stage (superclase).
 		setImagesLoader(loader);
 		setSoundsLoader(sounds);
@@ -60,15 +66,15 @@ public class Main extends Stage {
 		// no cargamos nada.
 		loader = new ImagesLoader("res/img", "loader");
 		sounds = new SoundsLoader("res/sounds", "loader");
-		// A�adimos los cargadores de sonido y de
+		// A占폸dimos los cargadores de sonido y de
 		// imagen a el objeto Stage (superclase).
 		setImagesLoader(loader);
 		setSoundsLoader(sounds);
 	}
 	
 	public synchronized void initStage() {
-		// Cargamos las im�genes y los sonidos
-		// que est�n indicados en el archivo externo.
+		// Cargamos las im占퐂enes y los sonidos
+		// que est占퐊 indicados en el archivo externo.
 		loader.startLoader();
 		sounds.startLoader();
 		
@@ -76,14 +82,14 @@ public class Main extends Stage {
 		map.initMap();
 
 		// Creamos un jugador.
-		Mario m = new Mario(this);
+		m = new Mario(this);
 		map.addPlayer(m);
 	}
 
 	public synchronized void updateStage() {
 		map.act();
-		// 포탈에 닿았을 때 다음 스테이지
-		// 코인다먹었을때 하트하나 증가 if (!gameOver && Coin.N_COINS == Coin.COINS_CATCHED)
+		// �룷�깉�뿉 �떯�븯�쓣 �븣 �떎�쓬 �뒪�뀒�씠吏�
+		// 肄붿씤�떎癒뱀뿀�쓣�븣 �븯�듃�븯�굹 利앷� if (!gameOver && Coin.N_COINS == Coin.COINS_CATCHED)
 //		if (!gameOver && Coin.N_COINS == Coin.COINS_CATCHED) {
 //			gameOver();
 //			final Stage s = this;
@@ -112,7 +118,7 @@ public class Main extends Stage {
 					gameOver = false;
 					Portal.checkTouchPortal = false;
 					map.nextLevel();
-					map.addPlayer(new Mario(s));
+					map.addPlayer(m);
 					Coin.COINS_CATCHED = 0;
 				}
 			}).start();
@@ -123,10 +129,10 @@ public class Main extends Stage {
 		g.setColor(Color.BLACK);
 		g.fillRect(0,0,WIDTH,HEIGHT);
 		map.paint(g);
-		// Indicamos que se ha llegado al final
-		// del juego si es necesario.
+		Graphics2D g2 = (Graphics2D)g;
+		drawRemainingLives(g2);
+
 		if (gameOver) {
-			Graphics2D g2 = (Graphics2D)g;
 			g2.setColor(Color.WHITE);
 			g2.setRenderingHint(
 				RenderingHints.KEY_TEXT_ANTIALIASING,
@@ -147,6 +153,14 @@ public class Main extends Stage {
 		//b = imgEffects.returnAlphaImg(b, 0.6F);
 		//g.drawImage(b, 0,0,null);
 	}
+	
+    private void drawRemainingLives(Graphics2D g2) {
+		g2.setFont(new Font(Font.MONOSPACED, Font.BOLD, 30));
+		g2.setColor(Color.WHITE);
+        String displayedStr = "♥: " + m.getRemainingLives() ;
+        g2.drawImage(heartIcon, 50, 10, null);
+        g2.drawString(displayedStr, 100, 50);
+    }
 
 	public synchronized void mouseMoved(MouseEvent e) {
 	}

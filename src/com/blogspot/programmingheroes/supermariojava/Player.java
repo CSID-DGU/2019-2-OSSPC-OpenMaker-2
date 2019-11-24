@@ -25,7 +25,7 @@ public abstract class Player extends WorldObject {
 	public static final int MOVING_RIGHT = 1;
 	public static final int MOVING_LEFT = 2;
 
-	/* Variables estáticas que ayudan a reproducir
+	/* Variables estï¿½ticas que ayudan a reproducir
 	 * los sonidos de dos saltos seguidos sin
 	 * interrupciones. */
 	public static AudioClip[] audio;
@@ -34,9 +34,9 @@ public abstract class Player extends WorldObject {
 
 	/* Teclas que controlan al jugador. 
 	 * Para definir estas teclas en la subclase
-	 * simplemente habría que implementar el método
-	 * createKeys(void) y en el cuerpo de la función
-	 * realizar la asignación de valores. */
+	 * simplemente habrï¿½a que implementar el mï¿½todo
+	 * createKeys(void) y en el cuerpo de la funciï¿½n
+	 * realizar la asignaciï¿½n de valores. */
 	public abstract void createKeys();
 	public int keyLeft;
 	public int keyRight;
@@ -45,7 +45,7 @@ public abstract class Player extends WorldObject {
 	public int keyCrouch;
 
 	/* Variables booleanas que indican si las
-	 * teclas anteriormente nombradas están o
+	 * teclas anteriormente nombradas estï¿½n o
 	 * no pulsadas. */
 	public boolean keyLeftDown = false;
 	public boolean keyRightDown = false;
@@ -53,7 +53,7 @@ public abstract class Player extends WorldObject {
 	public boolean keyJumpDown = false;
 	public boolean keyCrouchDown = false;
 
-	/* Para las imágenes que representan el estado
+	/* Para las imï¿½genes que representan el estado
 	 * del sprite. */
 	protected abstract void createImgs();
 	protected String imgLStop;
@@ -79,7 +79,7 @@ public abstract class Player extends WorldObject {
 	 * STOPPED, MOVING_RIGHT, or MOVING_LEFT. */
 	protected int xState;
 
-	/* Variable que controla la dirección que hay que
+	/* Variable que controla la direcciï¿½n que hay que
 	 * tomar en caso de que se pulsen las dos teclas
 	 * de movimiento a la vez. */
 	protected int leftAndRight;
@@ -90,15 +90,15 @@ public abstract class Player extends WorldObject {
 	protected float acelY = ((Main)stage)
 		.getGravity();
 	protected float speedY = 10; // defecto 10
-	protected float reward = 1; // aceleración extra
+	protected float reward = 1; // aceleraciï¿½n extra
 	// que se puede conseguir en caso de que se salte
 	// con velocidad en el eje X. Si running==true se
-	// puede conseguir algo más de la velocidad
+	// puede conseguir algo mï¿½s de la velocidad
 	// marcaga por esta variable. Defecto 1
 	protected float acelRunningX = 0.1F;
 	protected float speedRunningX = 4;
 
-	// Representa la posición del suelo más cercano en el
+	// Representa la posiciï¿½n del suelo mï¿½s cercano en el
 	// cual se puede apoyar el jugador.
 	protected int floor = WorldObject.NOT_FLOOR;
 	protected int lastFloor = WorldObject.NOT_FLOOR;
@@ -113,11 +113,24 @@ public abstract class Player extends WorldObject {
 	// Para otros estado no relacionados con el
 	// movimiento:
 	protected volatile boolean crouching = false;
+	
+	//ìºë¦­í„° ëª©ìˆ¨ê°œìˆ˜
+	public static int remainingLives;
+
+	public static int getRemainingLives() {
+		return remainingLives;
+	}
+
+
+	public static void setRemainingLives(int remainingLives) {
+		Player.remainingLives = remainingLives;
+	}
+
 
 	public Player(Stage s) {
 		super(s);
-		// Múltiples sonidos de saltos para evitar
-		// interrupciones en la reproducción.
+		// Mï¿½ltiples sonidos de saltos para evitar
+		// interrupciones en la reproducciï¿½n.
 		if (first) {
 			first = false;
 			indexAudio = 0;
@@ -127,9 +140,11 @@ public abstract class Player extends WorldObject {
 					.getAudio("jump.wav", true, true);
 			}
 		}
+		//ì´ˆê¸° ëª©ìˆ¨3ê°œ ì„¸íŒ…
+		remainingLives = 3;
 		// Establece las teclas que controlan al jugador
 		createKeys();
-		// Establece las imágenes que representan al jugador.
+		// Establece las imï¿½genes que representan al jugador.
 		createImgs();
 		// Player quieto y mirando hacia la derecha.
 		xState = STOPPED;
@@ -143,7 +158,7 @@ public abstract class Player extends WorldObject {
 	public synchronized void act() {
 		// Actualizamos las coordenadas
 		// dependiendo de su vector velocidad.
-		// También actualiza el mapa.
+		// Tambiï¿½n actualiza el mapa.
 		movePlayer();
 
 		// Control de velocidades para el EJE X:
@@ -156,7 +171,7 @@ public abstract class Player extends WorldObject {
 			jump();
 		}
 
-		// Control de la dirección en caso de que se
+		// Control de la direcciï¿½n en caso de que se
 		// hayan pulsado las dos teclas.
 		if (keyRightDown && keyLeftDown) {
 			if (leftAndRight == STOPPED) {
@@ -178,20 +193,20 @@ public abstract class Player extends WorldObject {
 				moveLeft();
 		} else if (!keyLeftDown && !keyRightDown
 			&& xState != STOPPED) {
-		// Si no hay ninguna tecla de dirrección
-		// pulsada y el jugador no está quieto...
+		// Si no hay ninguna tecla de dirrecciï¿½n
+		// pulsada y el jugador no estï¿½ quieto...
 				stop();
 		}
 
 		// Agachamos al jugador en caso de que sea
 		// necesario.
 		if (xState == STOPPED && yState == NOT_JUMPING) {
-			// Si no está agachado pero está la
+			// Si no estï¿½ agachado pero estï¿½ la
 			// tecla de agacharse pulsada...
 			if (keyCrouchDown && !crouching) {
 				crouch();
 			} else if (!keyCrouchDown && crouching) {
-			// Si está agachado y no está la
+			// Si estï¿½ agachado y no estï¿½ la
 			// tecla de agacharse pulsada...
 				standUp();
 			}
@@ -247,7 +262,7 @@ public abstract class Player extends WorldObject {
 				}
 			}
 		} else if (xState == STOPPED) {
-			// La aceleración de frenado es siempre
+			// La aceleraciï¿½n de frenado es siempre
 			// acelX, esto crea un mayor efecto de
 			// deslizamiento en el momento de frenar
 			// desde velocidades superiores a speedX.
@@ -304,7 +319,7 @@ public abstract class Player extends WorldObject {
 		}
 		lastFloor = floor;
 		floor = NOT_FLOOR;
-		// Si está saltando hay que aplicar la velocidad
+		// Si estï¿½ saltando hay que aplicar la velocidad
 		// de subida y detectar cuando comienza a bajar.
 		if (yState != NOT_JUMPING) {
 			// Si acabamos de saltar establecemos una
@@ -334,23 +349,23 @@ public abstract class Player extends WorldObject {
 						speed.setY(4);
 					}
 				}
-				// Aplicamos gravedad, es decir, la aceleración
+				// Aplicamos gravedad, es decir, la aceleraciï¿½n
 				// en el eje Y (acelY). Siempre sin superar la
-				// velocidad máxima indicada por speedY.
+				// velocidad mï¿½xima indicada por speedY.
 				double s = speed.getAccurateY()-acelY;
 				if (yState != FALLING && s <= 0) {
 					fall();
 				}
-				// Evitar superar la velocidad máxima.
+				// Evitar superar la velocidad mï¿½xima.
 				if (-s > speedY) {
 					s = -speedY;
 				}
-				// Establecemos la aceleración.
+				// Establecemos la aceleraciï¿½n.
 				speed.setY(s);
 			}
 		}
 
-		// Si nos vamos más allá de la parte
+		// Si nos vamos mï¿½s allï¿½ de la parte
 		// inferior del mapa hemos muerto jajaja
 		// TODO
 	}
@@ -368,11 +383,11 @@ public abstract class Player extends WorldObject {
 					setImages(imgRight, 1, 3);
 			}
 		}
-		// Pasamos de una imagen a otra cuando se está
+		// Pasamos de una imagen a otra cuando se estï¿½
 		// moviendo para dar el efecto de que mueve las
 		// piernas y los brazos. Dependiendo de si anda
-		// o está corriendo las imágenes van más lentas
-		// o más rápidas.
+		// o estï¿½ corriendo las imï¿½genes van mï¿½s lentas
+		// o mï¿½s rï¿½pidas.
 		if (xState != STOPPED && yState == NOT_JUMPING
 			&& !slipping) {
 				int num = 0;
@@ -511,7 +526,7 @@ public abstract class Player extends WorldObject {
 		}
 	}
 
-	// SET métodos --------------------------------------------------
+	// SET mï¿½todos --------------------------------------------------
 	public void setXStage(int s) {
 		if (s == MOVING_RIGHT ||
 			s == MOVING_LEFT ||
@@ -540,7 +555,7 @@ public abstract class Player extends WorldObject {
 		x = wall-width+
 			(int)bounds.get(0).getX();
 	}
-	//  fin de SET métodos ------------------------------------------
+	//  fin de SET mï¿½todos ------------------------------------------
 
 	// Boolean metodos ----------------------------------------------
 	public boolean isRising() {
@@ -566,7 +581,7 @@ public abstract class Player extends WorldObject {
 	public boolean isWalkingLeft() {
 		return xState == MOVING_LEFT;
 	}
-	//  fin de los métodos booleanos --------------------------------
+	//  fin de los mï¿½todos booleanos --------------------------------
 
 	public synchronized void keyPressed(KeyEvent e) {
 		if (e.getKeyCode() == keyJump) {
