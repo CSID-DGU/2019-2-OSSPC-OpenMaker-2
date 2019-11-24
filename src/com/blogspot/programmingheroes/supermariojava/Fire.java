@@ -92,6 +92,7 @@ public class Fire extends WorldObject {
 		if (frameFrec==0 
 			|| stage.getTotalUpdates()%frameFrec == 0) {
 				setImage(indexClass);
+				
 				changeImg = true;
 		}
 	}
@@ -105,7 +106,13 @@ public class Fire extends WorldObject {
 				//만약 남는 하트가 하나도 없으면 게임오버 창으로 이동
 				map.makeThisMap();
 				map.addPlayer(p);
-				
+				Player.remainingLives -= 1;
+				if(Player.remainingLives <= 0) {
+					System.out.println("게임종료 창으로 이동");
+					//게임종료 창 이동
+					return;
+					
+				}
 				System.out.println("죽었습니다.");
 			}
 

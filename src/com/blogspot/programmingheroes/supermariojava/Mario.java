@@ -4,24 +4,24 @@
 package com.blogspot.programmingheroes.supermariojava;
 
 
-import java.awt.event.*;
-import java.awt.*;
+import java.awt.Rectangle;
+import java.awt.event.KeyEvent;
 
 
 /**
  *
  */
 public class Mario extends Player {
-
+	
 	public Mario(Stage s) {
 		super(s);
-		// Tamaño predeterminado del jugador.
+		// Tamaï¿½o predeterminado del jugador.
 		setPreferredSize(map.tileXSize, map.tileYSize);
-		// Rectángulo para las colisiones
+		// Rectï¿½ngulo para las colisiones
 		bounds.add(new Rectangle(6, 1, width-12, height-1));
 		}
 
-	/* Asignación de las teclas que controlan al jugador. */
+	/* Asignaciï¿½n de las teclas que controlan al jugador. */
 	public void createKeys() {
 		keyLeft = KeyEvent.VK_LEFT;
 		keyRight = KeyEvent.VK_RIGHT;
@@ -30,7 +30,7 @@ public class Mario extends Player {
 		keyCrouch = KeyEvent.VK_DOWN;
 	}
 
-	/* Asignación de las imágenes que representan al jugador. */
+	/* Asignaciï¿½n de las imï¿½genes que representan al jugador. */
 	public void createImgs() {
 		imgLStop = "marioLStop";
 		imgRStop = "marioRStop";
