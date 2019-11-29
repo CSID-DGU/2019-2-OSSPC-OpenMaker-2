@@ -85,7 +85,6 @@ public class Main extends Stage {
 		m = new Mario(this);
 		map.addPlayer(m);
 	}
-
 	public synchronized void updateStage() {
 		map.act();
 		// �룷�깉�뿉 �떯�븯�쓣 �븣 �떎�쓬 �뒪�뀒�씠吏�
@@ -122,7 +121,14 @@ public class Main extends Stage {
 					Coin.COINS_CATCHED = 0;
 				}
 			}).start();
+			//코인 다먹고 다음 판으로 넘어갈 시 heart 1개 증가
+			if (Coin.N_COINS == Coin.COINS_CATCHED) {
+				Coin.N_COINS = 0;
+				Coin.COINS_CATCHED = 0;
+				Player.remainingLives++;
+			}
 		}
+
 	}
 
 	public synchronized void renderStage(Graphics g) {
@@ -142,16 +148,6 @@ public class Main extends Stage {
 			g2.drawString("Next Stage",
 				WIDTH/2-100, HEIGHT/2-10);
 		}
-		// PARA SIMULAR OSCURIDAD EN EL MAPA
-		//BufferedImage b =
-		//	new BufferedImage(WIDTH, HEIGHT, 2);
-		//Graphics2D gg = (Graphics2D)b.getGraphics();
-		//gg.setColor(Color.BLACK);
-		//gg.setPaint(new GradientPaint(WIDTH/2, 0, Color.BLACK,
-		//	WIDTH/2, HEIGHT, Color.WHITE)); 
-		//gg.fillRect(0,0,WIDTH,HEIGHT);
-		//b = imgEffects.returnAlphaImg(b, 0.6F);
-		//g.drawImage(b, 0,0,null);
 	}
 	
     private void drawRemainingLives(Graphics2D g2) {

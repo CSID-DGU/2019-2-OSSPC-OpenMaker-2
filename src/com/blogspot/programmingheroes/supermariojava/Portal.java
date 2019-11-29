@@ -94,7 +94,7 @@ public class Portal extends WorldObject {
 				changeImg = true;
 		}
 	}
-
+	
 	public void collision(Sprite s) {
 		if (s instanceof Player && supportsPlayer) {
 			Player p = (Player)s;
