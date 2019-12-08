@@ -13,6 +13,7 @@
 1 back1=background1.gif
 1 back2=background2.gif
 1 back3=background3.gif
+1 back4=gameover.jpg
 
 // Para las monedas del juego
 3 coin=coins/coin.gif 4 1

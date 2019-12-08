@@ -5,6 +5,7 @@ package com.blogspot.programmingheroes.supermariojava;
 
 
 import java.applet.AudioClip;
+import java.awt.Graphics;
 import java.awt.Rectangle;
 
 import com.blogspot.programmingheroes.supermariojava.loaders.ImagesLoader;
@@ -21,8 +22,6 @@ public class Fire extends WorldObject {
 	 * puedan pasar de una imagen a otra todos sincronizados.
 	 */
 	protected static int indexClass = 0;
-
-
 	/* Indica que es necesario actualizar el indexClass. */
 	protected static boolean changeImg = false;
 
@@ -60,7 +59,7 @@ public class Fire extends WorldObject {
 	// y el la cual se quedar� quieto el ladrillo cuando
 	// realize se movimiento al ser golpeado
 	protected float initY = 0;
-
+	private Main main;
 	public Fire(Stage s) {
 		super(s);
 		supportsPlayer = true;
@@ -110,8 +109,8 @@ public class Fire extends WorldObject {
 				if(Player.remainingLives <= 0) {
 					System.out.println("게임종료 창으로 이동");
 					//게임종료 창 이동
+					main.gameEnd();
 					return;
-					
 				}
 				System.out.println("죽었습니다.");
 			}

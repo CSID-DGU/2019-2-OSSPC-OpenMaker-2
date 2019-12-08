@@ -231,6 +231,19 @@ public boolean endlevel = false;
 		initMap();
 		endlevel = false;	
 	}
+	
+	//GameOver
+	public void gameOverView() {
+		endlevel = true;
+		try{Thread.sleep(500);}catch(Exception e){}
+		StringBuffer s = new StringBuffer(fileName);
+		s.replace(fileName.lastIndexOf(""+level),
+		fileName.lastIndexOf(""+level)+1, ""+(0));
+		fileName = s.toString();
+		initMap();
+		endlevel = false;	
+	}
+	
 	//현재 맵 다시 생성
 	public void makeThisMap() {
 		try{Thread.sleep(100);}catch(Exception e){}

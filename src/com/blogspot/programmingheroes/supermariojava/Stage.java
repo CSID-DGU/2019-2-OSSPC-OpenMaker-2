@@ -420,6 +420,8 @@ public abstract class Stage implements Runnable,
 	public abstract void renderStage(Graphics g);
 
 	public abstract void initStage();
+	
+	public abstract void gameEnd();
 
 	// Indicates the end of the game
 	public void gameOver() {

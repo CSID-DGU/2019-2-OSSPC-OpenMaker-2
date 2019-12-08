@@ -32,9 +32,10 @@ public class Main extends Stage {
 	private SoundsLoader sounds;
 	private Map map;
 	private BufferedImage heartIcon;
-
+	private BufferedImage gameOverScreen;
 	private float gravity = 0.2F;
-
+	private final int NEXTSTAGE_TIME = 2000;
+	
 	Point pointCursor = new Point(-1,-1);
 
 	private Mario m;
@@ -72,6 +73,16 @@ public class Main extends Stage {
 		setSoundsLoader(sounds);
 	}
 	
+	public static void heartUp() {
+		//코인 다먹고 다음 판으로 넘어갈 시 heart 1개 증가
+		//Coin안에 N_COINS는 맵에 있는 총 코인수, COINS_CATCHED은 먹은 코인수!
+		if (Coin.N_COINS == Coin.COINS_CATCHED) {
+			Coin.N_COINS = 0;
+			Coin.COINS_CATCHED = 0;
+			Player.remainingLives++;
+		}
+	}
+	
 	public synchronized void initStage() {
 		// Cargamos las im占퐂enes y los sonidos
 		// que est占퐊 indicados en el archivo externo.
@@ -87,31 +98,12 @@ public class Main extends Stage {
 	}
 	public synchronized void updateStage() {
 		map.act();
-		// �룷�깉�뿉 �떯�븯�쓣 �븣 �떎�쓬 �뒪�뀒�씠吏�
-		// 肄붿씤�떎癒뱀뿀�쓣�븣 �븯�듃�븯�굹 利앷� if (!gameOver && Coin.N_COINS == Coin.COINS_CATCHED)
-//		if (!gameOver && Coin.N_COINS == Coin.COINS_CATCHED) {
-//			gameOver();
-//			final Stage s = this;
-//			new Thread(new Runnable() {
-//				public void run() {
-//					try {
-//						Thread.sleep(2000);
-//					} catch (Exception e) {}
-//					Coin.N_COINS = 0;
-//					gameOver = false;
-//					map.nextLevel();
-//					map.addPlayer(new Mario(s));
-//					Coin.COINS_CATCHED = 0;
-//				}
-//			}).start();
-//		}
 		if (!gameOver && Portal.checkTouchPortal) {
 			gameOver();
-			final Stage s = this;
 			new Thread(new Runnable() {
 				public void run() {
 					try {
-						Thread.sleep(2000);
+						Thread.sleep(NEXTSTAGE_TIME);
 					} catch (Exception e) {}
 					Coin.N_COINS = 0;
 					gameOver = false;
@@ -121,16 +113,10 @@ public class Main extends Stage {
 					Coin.COINS_CATCHED = 0;
 				}
 			}).start();
-			//코인 다먹고 다음 판으로 넘어갈 시 heart 1개 증가
-			if (Coin.N_COINS == Coin.COINS_CATCHED) {
-				Coin.N_COINS = 0;
-				Coin.COINS_CATCHED = 0;
-				Player.remainingLives++;
-			}
+			heartUp();
 		}
-
 	}
-
+	
 	public synchronized void renderStage(Graphics g) {
 		g.setColor(Color.BLACK);
 		g.fillRect(0,0,WIDTH,HEIGHT);
@@ -147,6 +133,21 @@ public class Main extends Stage {
 				Font.BOLD, 30));
 			g2.drawString("Next Stage",
 				WIDTH/2-100, HEIGHT/2-10);
+		}
+	}
+
+	public void gameEnd() {
+		map.act();
+		if (Player.remainingLives <= 0) {
+			new Thread(new Runnable() {
+				public void run() {
+					try {
+						Thread.sleep(NEXTSTAGE_TIME);
+					} catch (Exception e) {}
+					map.gameOverView();
+					map.addPlayer(m);
+				}
+			}).start();
 		}
 	}
 	
