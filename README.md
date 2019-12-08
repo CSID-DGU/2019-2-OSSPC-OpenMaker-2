@@ -1,3 +1,12 @@
+<p>
+    <img src="https://img.shields.io/badge/version-1.0.0-rgb(26, 188, 156).svg" />
+    <img alt="IDE" src="https://img.shields.io/badge/IDE-VSCode/Eclipse-rgb(26, 188, 156).svg" />
+    <img src="https://img.shields.io/badge/Ubuntu-16.04-rgb(26, 188, 156).svg" />
+    <img src="https://img.shields.io/badge/java-1.8-blue.svg" />   
+    <img alt="License" src="https://img.shields.io/badge/License-General Public License_2.0-yellow.svg"/>
+</p>
+
+
 SuperMarioJava
 ==============
 
@@ -8,6 +17,7 @@ Go here if you want to see a gameplay:
 http://programmingheroes.blogspot.com.es/2013/05/remake-super-mario-java.html
 
 -----------------------------------------------------------------------------
+
 
 Básico juego de Super Mario Bros hecho en Java.
 El objetivo es recolectar todas las monedas de cada nivel.
@@ -66,17 +76,24 @@ git clone https://github.com/CSID-DGU/2019-2-OSSPC-OpenMaker-2.git
 
 - 캐릭터와 brick, coin, stage 등 오브젝트들의 상호작용을 통한 게임플레이 제공
 
-- 현재는 모든 coin을 먹어야 다음 stage에 갈수 있다.
+- 모든 coin을 먹고 다음 포탈을 통해 다음 Stage로 이동하면 하트 +1.
 
-- Stage 이동은 코인을 다 먹고 포탈에 마리오가 닿으면 이동한다.
+- Stage 이동은 포탈에 마리오가 닿으면 이동한다.
 
 - 코인은 캐릭터에 닿으면 자동으로 획득할 수 있다. 
 
 - 낭떠러지(불구덩이)로 떨어지면 해당 스테이지로 초기화 되며 목숨(하트)가 하나 줄어든다.
 
+- 하트가 0이 되면 게임은 종료된다.
+
+
+
   ​				![AC_[20191119-144440]](assets/AC_%5B20191119-144440%5D.gif)
 
   ![AC_[20191119-142409]](assets/AC_%5B20191119-142409%5D.gif)
+
+
+--------------------------------------------------
 
 
 
