@@ -7,6 +7,7 @@
 </p>
 
 
+<p>
 
 # 기존 게임 Github 
 
@@ -16,7 +17,7 @@
 
 
 
-------
+
 
 ## 기존 게임 Screenshots
 
@@ -32,9 +33,12 @@
 
 
 
-
+</p>
 
 ------
+
+
+
 
 
 
@@ -65,7 +69,8 @@ git clone https://github.com/CSID-DGU/2019-2-OSSPC-OpenMaker-2.git
 - clone한 폴더를 선택하고  3번 칸에 해당하는 부분이 나왔는지 꼭!!! 확인하셔야 됩니다.
   저는 지금 이미 프로젝트를 import한 상태여서  Finish 버튼이 비활성화되어 있는데요,
   처음에 하시면 활성화되어있는 Finish버튼 누르시면 끝입니다.
-- ![1572364685962](assets/1572364685962.png)
+  
+    ![1572364685962](assets/1572364685962.png)
 
 
 
@@ -113,9 +118,8 @@ git clone https://github.com/CSID-DGU/2019-2-OSSPC-OpenMaker-2.git
 
 
 
-  				![AC_[20191119-144440]](assets/AC_%5B20191119-144440%5D.gif)
 
-  ![AC_[20191119-142409]](assets/AC_%5B20191119-142409%5D.gif)
+     ![AC_[20191119-142409]](assets/AC_%5B20191119-142409%5D.gif)
 
 
 
@@ -166,7 +170,7 @@ git clone https://github.com/CSID-DGU/2019-2-OSSPC-OpenMaker-2.git
 
 
 
-
+--------------
 
 
 
